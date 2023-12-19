@@ -1,5 +1,5 @@
 class BaseDeDatos extends Figura {
-    constructor(x, y) {
+    constructor(x, y, estrategiaColor) {
         super(x, y);
     }
 
