@@ -10,12 +10,12 @@ class Diagrama {
         //para determinar el tipo de figura del diagrama
         switch (this.tipo) {
             case "Persona":
-                return new Persona(this.x, this.y);
+                return new Persona(this.x, this.y, estrategiaColor);
             case "BaseDeDatos":
                 console.log("base de datos");
                 return new BaseDeDatos(this.x, this.y, estrategiaColor);
             case "NavegadorWeb":
-                return new NavegadorWeb(this.x, this.y);
+                return new NavegadorWeb(this.x, this.y, estrategiaColor);
             case "Telefono":
                 return new Telefono(this.x, this.y);
             default:
@@ -23,8 +23,11 @@ class Diagrama {
         }        
     }
 
+    enAreaCentral(x, y) {
+        this.figura.enAreaCentral(x, y);
+    }
+
     draw() {
-        //console.log("dibujar");
         this.figura.draw();
     }
 }

@@ -1,7 +1,8 @@
 class Figura {
-    constructor(x, y) {
+    constructor(x, y, estrategiaColor) {
         this.x = x;
         this.y = y;
+        this.estrategiaColor = estrategiaColor || new EstrategiaColorAzul();//azul es el color por defecto
         this.alto = 100;
         this.ancho = 200;
         this.tamanoDeTextoNombre = 20;

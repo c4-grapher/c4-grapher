@@ -6,19 +6,18 @@ let lienzo;
 let posicionInicialFiguraX;
 let posicionInicialFiguraY;
 
-let diagrama = new Diagrama(300, 300, "Telefono");
-
 function setup() {
-  let figura1 = new Persona(100, 100);
-  let figura2 = new Persona(700, 300);
-  figuras.push(figura1, figura2);
+  let estrategiaAzul = new EstrategiaColorAzul();
+  figuras.push(
+    new Diagrama(300, 500, "NavegadorWeb", estrategiaAzul),
+    new Diagrama(300, 300, "BaseDeDatos", estrategiaAzul)
+  );
 
   lienzo = createCanvas(displayWidth, displayHeight);
 }
 
 function draw() {
   background('#ffffeb');
-  diagrama.draw();
 
   figuras.forEach(function (figuraActual, indice, array) {
     figuraActual.draw();

@@ -1,6 +1,6 @@
 class NavegadorWeb extends Figura {
-    constructor(x, y) {
-        super(x, y);
+    constructor(x, y, estrategiaColor) {
+        super(x, y, estrategiaColor);
     }
 
     draw() {
