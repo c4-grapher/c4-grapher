@@ -11,8 +11,11 @@ class Diagrama {
         switch (this.tipo) {
             case "Persona":
                 return new Persona(this.x, this.y, estrategiaColor);
+            case "SistemaEnDesarrollo":
+                return new Sistema(this.x, this.y, estrategiaColor);
+            case "SistemaExistente":
+                return new Sistema(this.x, this.y, new EstrategiaColorGris());//siempre tiene el mismo color
             case "BaseDeDatos":
-                console.log("base de datos");
                 return new BaseDeDatos(this.x, this.y, estrategiaColor);
             case "NavegadorWeb":
                 return new NavegadorWeb(this.x, this.y, estrategiaColor);
@@ -20,7 +23,7 @@ class Diagrama {
                 return new Telefono(this.x, this.y);
             default:
                 return new Figura(this.x, this.y);
-        }        
+        }
     }
 
     enAreaCentral(x, y) {
