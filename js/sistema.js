@@ -1,7 +1,8 @@
 class Sistema extends Figura {
-    constructor(x, y, esAzul) {
-        super(x, y);
+    constructor(x, y, estrategiaColor) {
+        super(x, y, estrategiaColor);
         super.estereotipo = "Software system";
+        /*
         this.esAzul = esAzul;
         if (this.esAzul) {
             this.colorCentro = color(17, 104, 189);
@@ -9,12 +10,12 @@ class Sistema extends Figura {
         } else {
             this.colorCentro = color(153, 153, 153);
             this.colorBorde = color(138, 138, 138);
-        }
+        }*/
     }
     draw() {
         push();
-        stroke(this.colorBorde);
-        fill(this.colorCentro);
+        stroke(this.estrategiaColor.getColor());
+        fill(this.estrategiaColor.getColorClaro());
         rect(this.x, this.y, this.ancho, this.alto);
         super.dibujarTexto();
         super.dibujarCajaDeMovimiento();
