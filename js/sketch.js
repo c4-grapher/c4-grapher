@@ -1,4 +1,4 @@
-let figuras = [];
+let diagramas = [];
 let lineas = [];
 let figuraSeleccionada = null;
 let imagen;
@@ -8,8 +8,8 @@ let posicionInicialFiguraY;
 
 function setup() {
   let estrategiaAzul = new EstrategiaColorAzul();
-  figuras.push(
-    new Diagrama(100, 400, "Persona", estrategiaAzul),
+  diagramas.push(
+    new Diagrama(100, 100, "Persona", estrategiaAzul),
     new Diagrama(400, 100, "SistemaEnDesarrollo", estrategiaAzul),
     new Diagrama(700, 100, "SistemaExistente")
   );
@@ -19,7 +19,7 @@ function setup() {
 
 function draw() {
   background('#ffffeb');
-
+  /*
   stroke(0);
   strokeWeight(2);
 
@@ -41,9 +41,10 @@ function draw() {
     
     line(xStart, yStart, xEnd, yEnd);
   }
+  */
 
-  figuras.forEach(function (figuraActual, indice, array) {
-    figuraActual.draw();
+  diagramas.forEach(function (diagramaActual, indice, array) {
+    diagramaActual.getFigura.draw();
   })
   lineas.forEach(function (lineaActual, indice, array) {
     lineaActual.draw();
@@ -54,7 +55,8 @@ function mouseClicked() {
   if (mouseButton === LEFT) {
     let seleccionActual = null; //ninguno
     //para las figuras
-    figuras.forEach(function(figuraActual, indice, array) {
+    diagramas.forEach(function(diagramaActual, indice, array) {
+      let figuraActual = diagramaActual.getFigura;
       if (figuraActual.enAreaCentral(mouseX, mouseY)) {
         print('Area figura');
         seleccionActual = figuraActual; //el seleccionado

@@ -26,11 +26,7 @@ class Diagrama {
         }
     }
 
-    enAreaCentral(x, y) {
-        this.figura.enAreaCentral(x, y);
-    }
-
-    draw() {
-        this.figura.draw();
+    get getFigura() {
+        return this.figura;
     }
 }
