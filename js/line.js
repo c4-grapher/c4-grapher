@@ -57,7 +57,7 @@ class Linea {
 
         if (this.getTieneEstereotipo) {
             textAlign(CENTER, CENTER);
-            text(this.figura1.getNombre + "►" + this.figura2.getNombre, (puntoConexionFigura1.x + puntoConexionFigura2.x) / 2, (puntoConexionFigura1.y + puntoConexionFigura2.y) / 2 + 20);
+            //text(this.figura1.getNombre + "►" + this.figura2.getNombre, (puntoConexionFigura1.x + puntoConexionFigura2.x) / 2, (puntoConexionFigura1.y + puntoConexionFigura2.y) / 2 + 20);
             text(`[${this.getEstereotipo}]`, (puntoConexionFigura1.x + puntoConexionFigura2.x) / 2, (puntoConexionFigura1.y + puntoConexionFigura2.y) / 2 + 5);
         } else {
             textAlign(CENTER, CENTER);
