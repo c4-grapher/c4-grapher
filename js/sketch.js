@@ -1,5 +1,5 @@
-let diagramas = [];
-let lineas = [];
+let vectorDeDiagramas = [];
+let vectorDeLineas = [];
 let figuraSeleccionada = null;
 let imagen;
 let lienzo;
@@ -8,10 +8,15 @@ let posicionInicialFiguraY;
 
 function setup() {
   let estrategiaAzul = new EstrategiaColorAzul();
-  diagramas.push(
+  vectorDeDiagramas.push(
     new Diagrama(100, 100, "Persona", estrategiaAzul),
     new Diagrama(400, 100, "SistemaEnDesarrollo", estrategiaAzul),
     new Diagrama(700, 100, "SistemaExistente")
+  );
+  let figura1 = vectorDeDiagramas[0].getFigura;
+  let figura2 = vectorDeDiagramas[1].getFigura;
+  vectorDeLineas.push(
+    new Linea(figura1, figura2)
   );
 
   lienzo = createCanvas(displayWidth, displayHeight);
@@ -43,10 +48,10 @@ function draw() {
   }
   */
 
-  diagramas.forEach(function (diagramaActual, indice, array) {
+  vectorDeDiagramas.forEach(function (diagramaActual, indice, array) {
     diagramaActual.getFigura.draw();
   })
-  lineas.forEach(function (lineaActual, indice, array) {
+  vectorDeLineas.forEach(function (lineaActual, indice, array) {
     lineaActual.draw();
   })
 }
@@ -55,20 +60,22 @@ function mouseClicked() {
   if (mouseButton === LEFT) {
     let seleccionActual = null; //ninguno
     //para las figuras
-    diagramas.forEach(function(diagramaActual, indice, array) {
+    vectorDeDiagramas.forEach(function(diagramaActual, indice, array) {
       let figuraActual = diagramaActual.getFigura;
       if (figuraActual.enAreaCentral(mouseX, mouseY)) {
         print('Area figura');
         seleccionActual = figuraActual; //el seleccionado
       }
     })
-    //para las lineas
-    lineas.forEach(function(lineaActual, indice, array) {
+    //para las vectorDeLineas
+    /*
+    vectorDeLineas.forEach(function(lineaActual, indice, array) {
       if (lineaActual.enCajaDeMovimiento1(mouseX, mouseY) || lineaActual.enCajaDeMovimiento2(mouseX, mouseY)) {
         print('Area linea');
         seleccionActual = lineaActual; //el seleccionado
       }
     })
+    */
     //para ambos
     if (figuraSeleccionada) {
       figuraSeleccionada.setSeleccionado = false;

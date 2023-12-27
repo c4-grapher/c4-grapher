@@ -62,6 +62,8 @@ class Linea {
         }
         textStyle(BOLD);
         text(this.nombreDeRelacion, this.centroLineaX, this.centroLineaY - 10);
+        this.dibujarFlecha(this.figura1.getCentroX,this.figura1.getCentroY,
+            this.figura2.getCentroX, this.figura2.getCentroY,20);
         pop();
     }
     enAreaCentral(x, y) {
@@ -69,5 +71,18 @@ class Linea {
             return true;
         }
         return false;
+    }
+
+    // Funcion para dibujar un triangulo en la punta de la linea
+    dibujarFlecha(x1, y1, x2, y2, tamanoFlecha) {
+        let angulo = atan2(y2 - y1, x2 - x1);
+        let x3 = x2 - tamanoFlecha * cos(angulo - PI / 6);
+        let y3 = y2 - tamanoFlecha * sin(angulo - PI / 6);
+        let x4 = x2 - tamanoFlecha * cos(angulo + PI / 6);
+        let y4 = y2 - tamanoFlecha * sin(angulo + PI / 6);
+
+        fill(0);
+        drawingContext.setLineDash([]); //valor por defecto
+        triangle(x2, y2, x3, y3, x4, y4);
     }
 }
