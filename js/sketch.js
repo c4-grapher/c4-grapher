@@ -1,5 +1,5 @@
-let diagramas = [];
-let lineas = [];
+let vectorDeDiagramas = [];
+let vectorDeLineas = [];
 let figuraSeleccionada = null;
 let imagen;
 let lienzo;
@@ -8,10 +8,23 @@ let posicionInicialFiguraY;
 
 function setup() {
   let estrategiaAzul = new EstrategiaColorAzul();
-  diagramas.push(
+  vectorDeDiagramas.push(
+    //Nivel 1
     new Diagrama(100, 100, "Persona", estrategiaAzul),
-    new Diagrama(400, 100, "SistemaEnDesarrollo", estrategiaAzul),
-    new Diagrama(700, 100, "SistemaExistente")
+    new Diagrama(500, 100, "SistemaEnDesarrollo", estrategiaAzul),
+    new Diagrama(900, 100, "SistemaExistente"),
+    //Nivel 2
+    new Diagrama(100, 300, "Contenedor",estrategiaAzul),
+    new Diagrama(400, 300, "BaseDeDatos",estrategiaAzul),
+    new Diagrama(700, 300, "Telefono",estrategiaAzul),
+    new Diagrama(1000, 300, "NavegadorWeb",estrategiaAzul),
+    //Nivel 3
+    new Diagrama(100, 500, "Componente",estrategiaAzul)
+  );
+  let figura1 = vectorDeDiagramas[0].getFigura;
+  let figura2 = vectorDeDiagramas[1].getFigura;
+  vectorDeLineas.push(
+    new Linea(figura1, figura2)
   );
 
   lienzo = createCanvas(displayWidth, displayHeight);
@@ -19,34 +32,18 @@ function setup() {
 
 function draw() {
   background('#ffffeb');
-  /*
-  stroke(0);
-  strokeWeight(2);
+  
+  //separador de niveles (para desarrollo, sera borrado mas tarde)
+  text("Nivel 1", 30, 30);
+  line(0, 250, 1000, 250);
+  text("Nivel 2", 30, 280);
+  line(0, 450, 1000, 450);
+  text("Nivel 3", 30, 480);
 
-  // Coordenadas de inicio y fin
-  let x1 = 50;
-  let y1 = 100;
-  let x2 = 550;
-  let y2 = 550;
-
-  // Número de segmentos
-  let segments = 30;
-
-  // Dibujar la línea segmentada con trazos
-  for (let i = 0; i < segments; i+=2) {
-    let xStart = lerp(x1, x2, i / segments);
-    let yStart = lerp(y1, y2, i / segments);
-    let xEnd = lerp(x1, x2, (i + 1) / segments);
-    let yEnd = lerp(y1, y2, (i + 1) / segments);
-    
-    line(xStart, yStart, xEnd, yEnd);
-  }
-  */
-
-  diagramas.forEach(function (diagramaActual, indice, array) {
+  vectorDeDiagramas.forEach(function (diagramaActual, indice, array) {
     diagramaActual.getFigura.draw();
   })
-  lineas.forEach(function (lineaActual, indice, array) {
+  vectorDeLineas.forEach(function (lineaActual, indice, array) {
     lineaActual.draw();
   })
 }
@@ -55,20 +52,22 @@ function mouseClicked() {
   if (mouseButton === LEFT) {
     let seleccionActual = null; //ninguno
     //para las figuras
-    diagramas.forEach(function(diagramaActual, indice, array) {
+    vectorDeDiagramas.forEach(function(diagramaActual, indice, array) {
       let figuraActual = diagramaActual.getFigura;
       if (figuraActual.enAreaCentral(mouseX, mouseY)) {
         print('Area figura');
         seleccionActual = figuraActual; //el seleccionado
       }
     })
-    //para las lineas
-    lineas.forEach(function(lineaActual, indice, array) {
+    //para las vectorDeLineas
+    /*
+    vectorDeLineas.forEach(function(lineaActual, indice, array) {
       if (lineaActual.enCajaDeMovimiento1(mouseX, mouseY) || lineaActual.enCajaDeMovimiento2(mouseX, mouseY)) {
         print('Area linea');
         seleccionActual = lineaActual; //el seleccionado
       }
     })
+    */
     //para ambos
     if (figuraSeleccionada) {
       figuraSeleccionada.setSeleccionado = false;

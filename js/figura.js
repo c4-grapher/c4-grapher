@@ -88,10 +88,7 @@ class Figura {
         return this.y;
     }
     enAreaCentral(x, y) {
-        if (this.x < x && this.x + this.ancho > x && this.y < y && this.y + this.alto > y) {
-            return true;
-        }
-        return false;
+        return this.x < x && this.x + this.ancho > x && this.y < y && this.y + this.alto > y;
     }
     dibujarCajaDeMovimiento() {
         push();

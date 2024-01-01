@@ -1,7 +1,11 @@
 class Sistema extends Figura {
     constructor(x, y, estrategiaColor) {
         super(x, y, estrategiaColor);
-        super.estereotipo = "Software system";
+        if (estrategiaColor instanceof EstrategiaColorGris) {
+            super.estereotipo = "Software system, Existing System";
+        } else {
+            super.estereotipo = "Software system";
+        }
         /*
         this.esAzul = esAzul;
         if (this.esAzul) {
