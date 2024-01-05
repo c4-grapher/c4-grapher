@@ -70,6 +70,7 @@ function mouseClicked() {
     */
     //para ambos
     if (figuraSeleccionada) {
+      figuraSeleccionada.calcularPuntosDeSujecion(); //para no hacerlo a cada rato al mover
       figuraSeleccionada.setSeleccionado = false;
       figuraSeleccionada = null;
     }
