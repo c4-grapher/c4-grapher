@@ -70,7 +70,7 @@ function mouseClicked() {
     */
     //para ambos
     if (figuraSeleccionada) {
-      figuraSeleccionada.calcularPuntosDeSujecion(); //para no hacerlo a cada rato al mover
+      this.actualizarTodo(); //para no hacerlo a cada rato al mover
       figuraSeleccionada.setSeleccionado = false;
       figuraSeleccionada = null;
     }
@@ -79,6 +79,15 @@ function mouseClicked() {
       figuraSeleccionada.setSeleccionado = true;
     }
   }
+}
+
+function actualizarTodo() {
+  figuraSeleccionada.calcularPuntosDeSujecion();
+  //tambien podria solo actualizar la linea que se movio pero tardaria demasiado
+  vectorDeLineas.forEach((lineaActual, index) => {
+    lineaActual.actualizarPuntosDeSujecion();
+  });
+  
 }
 
 function mouseReleased() {

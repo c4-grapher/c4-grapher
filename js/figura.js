@@ -49,6 +49,9 @@ class Figura {
             });
         }
     }
+    getPuntoDeSujecion(indice) {
+        return this.vectorDePuntosDeSujecion[indice];
+    }
     reconstruirFigura(elOtroObjeto) {
         this.x = elOtroObjeto.x;
         this.y = elOtroObjeto.y;
