@@ -5,40 +5,22 @@ let imagen;
 let lienzo;
 let posicionInicialFiguraX;
 let posicionInicialFiguraY;
+let test = false;
 
 function setup() {
-  let estrategiaAzul = new EstrategiaColorAzul();
-  vectorDeDiagramas.push(
-    //Nivel 1
-    new Diagrama(100, 100, "Persona", estrategiaAzul),
-    new Diagrama(500, 100, "SistemaEnDesarrollo", estrategiaAzul),
-    new Diagrama(900, 100, "SistemaExistente"),
-    //Nivel 2
-    new Diagrama(100, 300, "Contenedor",estrategiaAzul),
-    new Diagrama(400, 300, "BaseDeDatos",estrategiaAzul),
-    new Diagrama(700, 300, "Telefono",estrategiaAzul),
-    new Diagrama(1000, 300, "NavegadorWeb",estrategiaAzul),
-    //Nivel 3
-    new Diagrama(100, 500, "Componente",estrategiaAzul)
-  );
-  let figura1 = vectorDeDiagramas[0].getFigura;
-  let figura2 = vectorDeDiagramas[1].getFigura;
-  vectorDeLineas.push(
-    new Linea(figura1, figura2)
-  );
-
   lienzo = createCanvas(displayWidth, displayHeight);
 }
 
 function draw() {
   background('#ffffeb');
-  
-  //separador de niveles (para desarrollo, sera borrado mas tarde)
-  text("Nivel 1", 30, 30);
-  line(0, 250, 1000, 250);
-  text("Nivel 2", 30, 280);
-  line(0, 450, 1000, 450);
-  text("Nivel 3", 30, 480);
+  if (test) {
+    //separador de niveles (para desarrollo, sera borrado mas tarde)
+    text("Nivel 1", 30, 30);
+    line(0, 250, 1000, 250);
+    text("Nivel 2", 30, 280);
+    line(0, 450, 1000, 450);
+    text("Nivel 3", 30, 480);
+  }
 
   vectorDeDiagramas.forEach(function (diagramaActual, indice, array) {
     diagramaActual.getFigura.draw();
