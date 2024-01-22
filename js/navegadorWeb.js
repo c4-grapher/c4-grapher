@@ -5,8 +5,10 @@ class NavegadorWeb extends Figura {
 
     draw() {
         push();
-        fill(8, 66, 123);
+        noStroke();
+        fill(this.estrategiaColor.getColor());
         rect(this.x, this.y, this.ancho, this.alto, 5);
+        fill(this.estrategiaColor.getColorClaro());
         circle(this.x + 10, this.y + 10, 9);
         circle(this.x + 25, this.y + 10, 9);
         circle(this.x + 40, this.y + 10, 9);

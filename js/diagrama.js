@@ -22,7 +22,7 @@ class Diagrama {
             case "BaseDeDatos":
                 return new BaseDeDatos(this.x, this.y, estrategiaColor);
             case "Telefono":
-                return new Telefono(this.x, this.y);
+                return new Telefono(this.x, this.y, estrategiaColor);
             case "NavegadorWeb":
                 return new NavegadorWeb(this.x, this.y, estrategiaColor);
             //Nivel 3

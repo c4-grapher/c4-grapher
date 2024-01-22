@@ -27,6 +27,7 @@ class Persona extends Figura {
         line(this.getX + this.seccionesAncho * 4, this.getY + this.seccionesAlto, this.getX + this.seccionesAncho * 4, this.getY + this.getAlto);
         super.dibujarTexto();
         super.dibujarCajaDeMovimiento();
+        super.dibujarPuntosDeSujecion();
         pop();
     }
 }

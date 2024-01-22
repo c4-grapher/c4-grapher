@@ -23,6 +23,7 @@ class Sistema extends Figura {
         rect(this.x, this.y, this.ancho, this.alto);
         super.dibujarTexto();
         super.dibujarCajaDeMovimiento();
+        super.dibujarPuntosDeSujecion();
         pop();
     }
 }

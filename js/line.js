@@ -2,6 +2,8 @@ class Linea {
     constructor(figura1, figura2) {
         this.figura1 = figura1;
         this.figura2 = figura2;
+        this.indiceDeSujecionFigura1 = 0;
+        this.indiceDeSujecionFigura2 = 0;
         this.radioDeAreaCentral = 20;
         this.estereotipo = "{technology}";
         this.tieneEstereotipo = true; //para saber si ponerne o no
@@ -9,7 +11,13 @@ class Linea {
         this.centroLineaY;
         this.seleccionado = false;
         this.nombreDeRelacion = "{descripcion}";
+        this.actualizarPuntosDeSujecion();
     }
+    actualizarPuntosDeSujecion() {
+        this.puntoDeSujecionFigura1 = this.figura1.getPuntoDeSujecion(this.indiceDeSujecionFigura1);
+        this.puntoDeSujecionFigura2 = this.figura2.getPuntoDeSujecion(this.indiceDeSujecionFigura2);
+    }
+
     reconstruirLinea(elOtroObjeto) {
         this.setEstereotipo = elOtroObjeto.estereotipo;
         this.setTieneEstereotipo = elOtroObjeto.tieneEstereotipo;
@@ -42,6 +50,7 @@ class Linea {
         return this.tieneEstereotipo;
     }
     draw() {
+        /*
         push();
         let puntoConexionFigura1 = this.calcularPuntoConexion(this.figura1, this.figura2);
         let puntoConexionFigura2 = this.calcularPuntoConexion(this.figura2, this.figura1);
@@ -69,12 +78,13 @@ class Linea {
 
         this.dibujarFlecha(puntoConexionFigura1.x, puntoConexionFigura1.y, puntoConexionFigura2.x, puntoConexionFigura2.y, 20);
         pop();
-        /*
+        */
+        
         push();
-        this.centroLineaX = (this.figura1.getCentroX + this.figura2.getCentroX) / 2;
-        this.centroLineaY = (this.figura1.getCentroY + this.figura2.getCentroY) / 2;
+        this.centroLineaX = (this.puntoDeSujecionFigura1.x + this.puntoDeSujecionFigura2.x) / 2;
+        this.centroLineaY = (this.puntoDeSujecionFigura1.y + this.puntoDeSujecionFigura2.y) / 2;
         drawingContext.setLineDash([10, 5]); //formato de la linea segmentada
-        line(this.figura1.getCentroX, this.figura1.getCentroY, this.figura2.getCentroX, this.figura2.getCentroY);
+        line(this.puntoDeSujecionFigura1.x, this.puntoDeSujecionFigura1.y, this.puntoDeSujecionFigura2.x, this.puntoDeSujecionFigura2.y);
         if (this.getSeleccionado) {
             fill(255, 255, 255);  //pintar la mascara blanca
             circle(this.centroLineaX, this.centroLineaY, this.radioDeAreaCentral);
@@ -90,10 +100,9 @@ class Linea {
         }
         textStyle(BOLD);
         text(this.nombreDeRelacion, this.centroLineaX, this.centroLineaY - 10);
-        this.dibujarFlecha(this.figura1.getCentroX,this.figura1.getCentroY,
-            this.figura2.getCentroX, this.figura2.getCentroY,20);
+        this.dibujarFlecha(this.puntoDeSujecionFigura1.x,this.puntoDeSujecionFigura1.y,
+            this.puntoDeSujecionFigura2.x, this.puntoDeSujecionFigura2.y, 20);
         pop();
-        */
     }
     enAreaCentral(x, y) {
         return this.radioDeAreaCentral > dist(this.centroLineaX, this.centroLineaY, x, y);
