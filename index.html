@@ -12,7 +12,9 @@
             background-color: #1b1b1b;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js" integrity="sha512-uaz5GpnQoE6t5echKlX8P52czvsIGgLPcvlzfvRubLZ1Hp8JemUDnbUiAahbVtPb+jUVrNETuXvAhDDF/N3M4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"
+        integrity="sha512-uaz5GpnQoE6t5echKlX8P52czvsIGgLPcvlzfvRubLZ1Hp8JemUDnbUiAahbVtPb+jUVrNETuXvAhDDF/N3M4w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -25,6 +27,11 @@
         <button onclick="colocarDiagrama('BaseDeDatos')">Base De Datos</button>
         <button onclick="colocarDiagrama('Telefono')">Telefono</button>
         <button onclick="colocarDiagrama('NavegadorWeb')">Navegador Web</button>
+        <select onchange="cambiarColor()" id="selectorColores">
+            <option selected value="azul">Azul</option>
+            <option value="verde">Verde</option>
+            <option value="rojo">Rojo</option>
+          </select>
         <button onclick="prueba()">Test</button>
     </main>
     <script src="js/estrategia/estrategiaColor.js"></script>
@@ -34,7 +41,8 @@
     <script src="js/estrategia/estrategiaColorGris.js"></script>
     <script src="js/figura.js"></script>
     <script src="js/persona.js"></script>
-    <script src="js/sistema.js"></script>
+    <script src="js/sistemaExistente.js"></script>
+    <script src="js/sistemaEnDesarrollo.js"></script>
     <script src="js/contenedor.js"></script>
     <script src="js/componente.js"></script>
     <script src="js/line.js"></script>
@@ -44,30 +52,49 @@
     <script src="js/diagrama.js"></script>
     <script src="js/sketch.js"></script>
     <script>
-        let estrategiaAzul = new EstrategiaColorAzul();
+        var estrategiaColor = new EstrategiaColorAzul(); //por defecto
         function colocarDiagrama(nombreDiagrama) {
-            vectorDeDiagramas.push(new Diagrama(100, 100, nombreDiagrama, estrategiaAzul))
+            vectorDeDiagramas.push(new Diagrama(100, 100, nombreDiagrama))
         }
         function prueba() {
             test = true;
             vectorDeDiagramas.push(
                 //Nivel 1
-                new Diagrama(100, 100, "Persona", estrategiaAzul),
-                new Diagrama(500, 100, "SistemaEnDesarrollo", estrategiaAzul),
+                new Diagrama(100, 100, "Persona"),
+                new Diagrama(500, 100, "SistemaEnDesarrollo"),
                 new Diagrama(900, 100, "SistemaExistente"),
                 //Nivel 2
-                new Diagrama(100, 300, "Contenedor",estrategiaAzul),
-                new Diagrama(400, 300, "BaseDeDatos",estrategiaAzul),
-                new Diagrama(700, 300, "Telefono",estrategiaAzul),
-                new Diagrama(1000, 300, "NavegadorWeb",estrategiaAzul),
+                new Diagrama(100, 300, "Contenedor"),
+                new Diagrama(400, 300, "BaseDeDatos"),
+                new Diagrama(700, 300, "Telefono"),
+                new Diagrama(1000, 300, "NavegadorWeb"),
                 //Nivel 3
-                new Diagrama(100, 500, "Componente",estrategiaAzul)
+                new Diagrama(100, 500, "Componente")
             );
             let figura1 = vectorDeDiagramas[0].getFigura;
             let figura2 = vectorDeDiagramas[1].getFigura;
             vectorDeLineas.push(
                 new Linea(figura1, figura2)
             );
+        }
+        function cambiarColor() {
+            let select = document.getElementById('selectorColores');
+            let value = select.options[select.selectedIndex].value;
+            switch (value) {
+                case "azul":
+                    Figura.estrategiaColor = new EstrategiaColorAzul();
+                    break;
+                case "verde":
+                    Figura.estrategiaColor = new EstrategiaColorVerde();
+                    break;
+                case "rojo":
+                    Figura.estrategiaColor = new EstrategiaColorRojo();
+                    break;
+
+                default:
+                    console.log("Error se recibio un color incorrecto");
+                    break;
+            }
         }
     </script>
 </body>

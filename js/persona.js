@@ -1,6 +1,6 @@
 class Persona extends Figura {
-    constructor(x, y, estrategiaColor) {
-        super(x, y, estrategiaColor);
+    constructor(x, y) {
+        super(x, y);
         super.estereotipo = "Person";
         this.ajustarSeccionesAnchoYAlto();
     }
@@ -20,7 +20,7 @@ class Persona extends Figura {
     }
     draw() {
         push();
-        fill(this.estrategiaColor.getColorOscuro());
+        fill(Figura.estrategiaColor.getColorOscuro());
         rect(this.x, this.y, this.ancho, this.alto, 20);
         circle(this.x + this.ancho / 2, this.y - 40, 100);
         line(this.getX + this.seccionesAncho, this.getY + this.seccionesAlto, this.getX + this.seccionesAncho, this.getY + this.getAlto);

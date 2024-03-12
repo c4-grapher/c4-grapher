@@ -1,14 +1,14 @@
 class NavegadorWeb extends Figura {
-    constructor(x, y, estrategiaColor) {
-        super(x, y, estrategiaColor);
+    constructor(x, y) {
+        super(x, y);
     }
 
     draw() {
         push();
         noStroke();
-        fill(this.estrategiaColor.getColor());
+        fill(Figura.estrategiaColor.getColor());
         rect(this.x, this.y, this.ancho, this.alto, 5);
-        fill(this.estrategiaColor.getColorClaro());
+        fill(Figura.estrategiaColor.getColorClaro());
         circle(this.x + 10, this.y + 10, 9);
         circle(this.x + 25, this.y + 10, 9);
         circle(this.x + 40, this.y + 10, 9);

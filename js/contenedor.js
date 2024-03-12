@@ -1,12 +1,12 @@
 class Contenedor extends Figura {
-    constructor(x, y, estrategiaColor) {
-        super(x, y, estrategiaColor);
+    constructor(x, y) {
+        super(x, y);
         super.estereotipo = "Container";
     }
     draw() {
         push();
-        stroke(this.estrategiaColor.getColor());
-        fill(this.estrategiaColor.getColorClaro());
+        stroke(Figura.estrategiaColor.getColor());
+        fill(Figura.estrategiaColor.getColorClaro());
         rect(this.x, this.y, this.ancho, this.alto);
         super.dibujarTexto();
         super.dibujarCajaDeMovimiento();
