@@ -1,11 +1,7 @@
-class Sistema extends Figura {
-    constructor(x, y, estrategiaColor) {
-        super(x, y, estrategiaColor);
-        if (estrategiaColor instanceof EstrategiaColorGris) {
-            super.estereotipo = "Software system, Existing System";
-        } else {
-            super.estereotipo = "Software system";
-        }
+class SistemaEnDesarrollo extends Figura {
+    constructor(x, y) {
+        super(x, y);
+        super.estereotipo = "Software system";
         /*
         this.esAzul = esAzul;
         if (this.esAzul) {
@@ -18,8 +14,8 @@ class Sistema extends Figura {
     }
     draw() {
         push();
-        stroke(this.estrategiaColor.getColor());
-        fill(this.estrategiaColor.getColorClaro());
+        stroke(Figura.estrategiaColor.getColor());
+        fill(Figura.estrategiaColor.getColorClaro());
         rect(this.x, this.y, this.ancho, this.alto);
         super.dibujarTexto();
         super.dibujarCajaDeMovimiento();

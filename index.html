@@ -41,7 +41,8 @@
     <script src="js/estrategia/estrategiaColorGris.js"></script>
     <script src="js/figura.js"></script>
     <script src="js/persona.js"></script>
-    <script src="js/sistema.js"></script>
+    <script src="js/sistemaExistente.js"></script>
+    <script src="js/sistemaEnDesarrollo.js"></script>
     <script src="js/contenedor.js"></script>
     <script src="js/componente.js"></script>
     <script src="js/line.js"></script>
@@ -53,22 +54,22 @@
     <script>
         var estrategiaColor = new EstrategiaColorAzul(); //por defecto
         function colocarDiagrama(nombreDiagrama) {
-            vectorDeDiagramas.push(new Diagrama(100, 100, nombreDiagrama, estrategiaColor))
+            vectorDeDiagramas.push(new Diagrama(100, 100, nombreDiagrama))
         }
         function prueba() {
             test = true;
             vectorDeDiagramas.push(
                 //Nivel 1
-                new Diagrama(100, 100, "Persona", estrategiaColor),
-                new Diagrama(500, 100, "SistemaEnDesarrollo", estrategiaColor),
+                new Diagrama(100, 100, "Persona"),
+                new Diagrama(500, 100, "SistemaEnDesarrollo"),
                 new Diagrama(900, 100, "SistemaExistente"),
                 //Nivel 2
-                new Diagrama(100, 300, "Contenedor", estrategiaColor),
-                new Diagrama(400, 300, "BaseDeDatos", estrategiaColor),
-                new Diagrama(700, 300, "Telefono", estrategiaColor),
-                new Diagrama(1000, 300, "NavegadorWeb", estrategiaColor),
+                new Diagrama(100, 300, "Contenedor"),
+                new Diagrama(400, 300, "BaseDeDatos"),
+                new Diagrama(700, 300, "Telefono"),
+                new Diagrama(1000, 300, "NavegadorWeb"),
                 //Nivel 3
-                new Diagrama(100, 500, "Componente", estrategiaColor)
+                new Diagrama(100, 500, "Componente")
             );
             let figura1 = vectorDeDiagramas[0].getFigura;
             let figura2 = vectorDeDiagramas[1].getFigura;
@@ -81,13 +82,13 @@
             let value = select.options[select.selectedIndex].value;
             switch (value) {
                 case "azul":
-                    estrategiaColor = new EstrategiaColorAzul();
+                    Figura.estrategiaColor = new EstrategiaColorAzul();
                     break;
                 case "verde":
-                    estrategiaColor = new EstrategiaColorVerde();
+                    Figura.estrategiaColor = new EstrategiaColorVerde();
                     break;
                 case "rojo":
-                    estrategiaColor = new EstrategiaColorRojo();
+                    Figura.estrategiaColor = new EstrategiaColorRojo();
                     break;
 
                 default:

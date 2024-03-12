@@ -1,9 +1,9 @@
 class Figura {
     static dibujarPuntosDeSujecion = false;
-    constructor(x, y, estrategiaColor) {
+    static estrategiaColor = new EstrategiaColorAzul();//azul es el color por defecto
+    constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.estrategiaColor = estrategiaColor || new EstrategiaColorAzul();//azul es el color por defecto
         this.alto = 100;
         this.ancho = 200;
         this.tamanoDeTextoNombre = 20;
